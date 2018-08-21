@@ -49,7 +49,7 @@ const (
 	//Insert inserts an array of data into table {{.TableName}}
 	func Insert(db *sql.DB, data []map[string]interface{}) (int64, error) {
 		if nil == db {
-			return nil, errors.New("sql.DB object couldn't be nil")
+			return 0, errors.New("sql.DB object couldn't be nil")
 		}
 		cond, vals, err := builder.BuildInsert("{{.TableName}}", data)
 		if nil != err {

@@ -79,7 +79,7 @@ const (
 	}
 
 	// Delete deletes matched records in {{.TableName}}
-	func Delete(db *sql.DB, where,data map[string]interface{}) (int64, error) {
+	func Delete(db *sql.DB, where map[string]interface{}) (int64, error) {
 		if nil == db {
 			return 0, errors.New("sql.DB object couldn't be nil")
 		}

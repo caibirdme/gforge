@@ -9,7 +9,7 @@ import (
 const (
 	daoCode = `
 	//GetOne gets one record from table {{.TableName}} by condition "where"
-	func GetOne(db *sql.DB, where map[string]interface{}) (*{{.StructName}}, error) {
+	func (*{{.StructName}})GetOne(db *sql.DB, where map[string]interface{}) (*{{.StructName}}, error) {
 		if nil == db {
 			return nil, errors.New("sql.DB object couldn't be nil")
 		}
@@ -28,7 +28,7 @@ const (
 	}
 
 	//GetMulti gets multiple records from table {{.TableName}} by condition "where"
-	func GetMulti(db *sql.DB, where map[string]interface{}) ([]*{{.StructName}}, error) {
+	func (*{{.StructName}})GetMulti(db *sql.DB, where map[string]interface{}) ([]*{{.StructName}}, error) {
 		if nil == db {
 			return nil, errors.New("sql.DB object couldn't be nil")
 		}
@@ -47,7 +47,7 @@ const (
 	}
 
 	//Insert inserts an array of data into table {{.TableName}}
-	func Insert(db *sql.DB, data []map[string]interface{}) (int64, error) {
+	func (*{{.StructName}})Insert(db *sql.DB, data []map[string]interface{}) (int64, error) {
 		if nil == db {
 			return 0, errors.New("sql.DB object couldn't be nil")
 		}
@@ -63,7 +63,7 @@ const (
 	}
 
 	//Update updates the table {{.TableName}}
-	func Update(db *sql.DB, where,data map[string]interface{}) (int64, error) {
+	func (*{{.StructName}})Update(db *sql.DB, where,data map[string]interface{}) (int64, error) {
 		if nil == db {
 			return 0, errors.New("sql.DB object couldn't be nil")
 		}
@@ -79,7 +79,7 @@ const (
 	}
 
 	// Delete deletes matched records in {{.TableName}}
-	func Delete(db *sql.DB, where map[string]interface{}) (int64, error) {
+	func (*{{.StructName}})Delete(db *sql.DB, where map[string]interface{}) (int64, error) {
 		if nil == db {
 			return 0, errors.New("sql.DB object couldn't be nil")
 		}

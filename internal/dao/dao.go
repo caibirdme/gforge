@@ -8,6 +8,8 @@ import (
 
 const (
 	daoCode = `
+	var Obj{{.StructName}} = {{.StructName}}{}
+	
 	//GetOne gets one record from table {{.TableName}} by condition "where"
 	func (*{{.StructName}})GetOne(db *sql.DB, where map[string]interface{}) (*{{.StructName}}, error) {
 		if nil == db {
@@ -62,6 +64,9 @@ const (
 		defer row.Close()
 		var res []*{{.StructName}}
 		err = scanner.Scan(row, &res)
+		if len(res) == 0 {
+			return nil, scanner.ErrEmptyResult
+		}
 		return res,err
 	}
 
@@ -81,6 +86,9 @@ const (
 		defer row.Close()
 		var res []*{{.StructName}}
 		err = scanner.Scan(row, &res)
+		if len(res) == 0 {
+			return nil, scanner.ErrEmptyResult
+		}
 		return res,err
 	}
 

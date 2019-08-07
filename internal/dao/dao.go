@@ -64,8 +64,8 @@ const (
 		defer row.Close()
 		var res []*{{.StructName}}
 		err = scanner.Scan(row, &res)
-		if len(res) == 0 {
-			return nil, scanner.ErrEmptyResult
+		if err == nil && len(res) == 0 {
+		  	err = scanner.ErrEmptyResult
 		}
 		return res,err
 	}
@@ -86,8 +86,8 @@ const (
 		defer row.Close()
 		var res []*{{.StructName}}
 		err = scanner.Scan(row, &res)
-		if len(res) == 0 {
-			return nil, scanner.ErrEmptyResult
+		if err == nil && len(res) == 0 {
+		  	err = scanner.ErrEmptyResult
 		}
 		return res,err
 	}
